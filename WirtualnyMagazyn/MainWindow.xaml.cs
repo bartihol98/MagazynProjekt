@@ -23,6 +23,9 @@ namespace WirtualnyMagazyn
     public partial class MainWindow : Window
     {
 
+        /// <summary>
+        /// zmienna login w ktorej zapisywany jest login zalogowanego uzytkownika przy pomyslnym logowaniu
+        /// </summary>
         private string login = "";
         private int userLevel = 0;
         public int Userlevel
@@ -41,18 +44,63 @@ namespace WirtualnyMagazyn
             set
             {
 
-                if((value.Length > 3) && (value is string))
+                if ((value.Length > 3) && (value is string))
                 {
                     login = value;
                 }
+                else if (value == "")
+                    login = value;
             }
         }
-        
-        
+        /// <summary>
+        /// Zapisanie nazwy zalogowanego uzytkownika u gory aplikacji
+        /// </summary>
+        public void LoginNameTopBar()
+        {
+            if(!(login == ""))
+               UserNameTopBar.Text = "Witaj : " + Login;
+            if (login == "")
+                UserNameTopBar.Text = "";
+        }
+
+        /// <summary>
+        /// Rozpoczecie inicjalizacji glownego programu i od razu zmienienie datacontext na usercontrol z panelem logowania
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new LoginPanelModel();
+            
+        }
+        /// <summary>
+        /// custom nav panel z mozliwoscia przesuwania okienka
+        /// </summary>
+        public void TopNavPanel(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        /// <summary>
+        /// przycisk do minimalizowania okienka
+        /// </summary>
+        private void MinimizeProgram_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+        /// <summary>
+        /// przycisk do wylaczenia aplikacji
+        /// </summary>
+        private void ShutdownProgram_Button(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        /// <summary>
+        /// przycisk wylogywuwajacy zmieniajacy zmienna przechowujaca nazwe uzytkownika na poczatku klasy MainWindow oraz cofniecie datacontext na panel logowania.
+        /// </summary>
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            login = "";
+            this.DataContext = new LoginPanelModel();
+            LoginNameTopBar();
         }
     }
 }

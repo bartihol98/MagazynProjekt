@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="WirtualnyMagazyn.Views.MainPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WirtualnyMagazyn.Views"
+             mc:Ignorable="d" 
+             xmlns:viewmodels="clr-namespace:WirtualnyMagazyn.ViewModels"
+             xmlns:views="clr-namespace:WirtualnyMagazyn.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="610" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <DataTemplate x:Name="AwaitingTemplate" DataType="{x:Type viewmodels:AwaitingModel}">
+            <views:Awaiting DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="InStockTemplate" DataType="{x:Type viewmodels:InStockModel}">
+            <views:InStock DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="SentTemplate" DataType="{x:Type viewmodels:SentModel}">
+            <views:Sent DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="HistorykTemplate" DataType="{x:Type viewmodels:HistoryModel}">
+            <views:History DataContext="{Binding}"/>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1" x:Name="hello">
+            <ContentControl x:Name="hello1" Content="{Binding}"/>
+        </Grid>
+        <StackPanel Background="#0C125E" ClipToBounds="True" Grid.Row="1" Height="610" VerticalAlignment="Top" Margin="0" >
+            <Button Height="153"  Background="#0C125E" x:Name="INSTOCK" BorderThickness="0 0 0 0" BorderBrush="#2e7d32" Click="INSTOCK_Click">
+                <Grid Width="120">
+                    <materialDesign:PackIcon Kind="ViewDashboard" HorizontalAlignment="Left" Height="25" Width="25" VerticalAlignment="Center"/>
+                    <TextBlock Text="IN STOCK" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 4 5 0"/>
+                    <Rectangle Height="153" Width="10"/>
+                </Grid>
+                
+            </Button>
+            <Button Height="153" BorderThickness="0 0 0 0" BorderBrush="#2e7d32" Background="#0C125E" x:Name="AWAITING" Click="AWAITING_Click">
+                <Grid Width="120">
+                    <materialDesign:PackIcon Kind="Launch" HorizontalAlignment="Left" Height="25" Width="25" VerticalAlignment="Center"/>
+                    <TextBlock Text="AWAITING" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 4 5 0"/>
+                </Grid>
+            </Button>
+            <Button Height="152" x:Name="SENT" Background="#0C125E" BorderThickness="0 0 0 0" BorderBrush="#2e7d32"  Click="SENT_Click">
+                <Grid Width="120">
+                    <materialDesign:PackIcon Kind="Send" HorizontalAlignment="Left" Height="25" Width="25" VerticalAlignment="Center"/>
+                    <TextBlock Text="SENT" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 4 35 0"/>
+                </Grid>
+            </Button>
+            <Button Height="152"  x:Name="HISTORY"  Background="#0C125E" BorderThickness="0 0 0 0" BorderBrush="#2e7d32"  Click="HISTORY_Click">
+                <Grid Width="120">
+                    <materialDesign:PackIcon Kind="Download" HorizontalAlignment="Left" Height="25" Width="25" VerticalAlignment="Center"/>
+                    <TextBlock Text="HISTORY" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 4 25 0"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

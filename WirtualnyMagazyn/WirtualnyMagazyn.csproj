@@ -77,12 +77,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="UserName.cs" />
-    <Compile Include="ViewModels\DashboardModel.cs" />
+    <Compile Include="ViewModels\AwaitingModel.cs" />
+    <Compile Include="ViewModels\HistoryModel.cs" />
     <Compile Include="ViewModels\InStockModel.cs" />
     <Compile Include="ViewModels\LoginPanelModel.cs" />
     <Compile Include="ViewModels\MainPanelModel.cs" />
-    <Compile Include="Views\Dashboard.xaml.cs">
-      <DependentUpon>Dashboard.xaml</DependentUpon>
+    <Compile Include="ViewModels\SentModel.cs" />
+    <Compile Include="Views\Awaiting.xaml.cs">
+      <DependentUpon>Awaiting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\History.xaml.cs">
+      <DependentUpon>History.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InStock.xaml.cs">
       <DependentUpon>InStock.xaml</DependentUpon>
@@ -92,6 +97,9 @@
     </Compile>
     <Compile Include="Views\MainPanel.xaml.cs">
       <DependentUpon>MainPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sent.xaml.cs">
+      <DependentUpon>Sent.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -105,7 +113,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Dashboard.xaml">
+    <Page Include="Views\Awaiting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\History.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Sent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
